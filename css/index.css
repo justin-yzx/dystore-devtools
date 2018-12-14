@@ -1,0 +1,44 @@
+*{
+    cursor: pointer;
+}
+.title{
+    line-height: 20px;
+    font-size: 12px;
+    padding-left: 5px;
+}
+.title span{
+    vertical-align: middle;
+}
+.title-key{
+    color: #881391;
+}
+.title:hover{
+    background-color: #e5f2ff;
+}
+.title-type{
+    color: #444444;
+    font-size: 10px;
+}
+.arrow{
+    display: inline-block;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid #444;
+    transition: transform 0.1s ease;
+}
+.rotate{
+    transform: rotate(90deg);
+}
+.title-string{
+    color: #000000;
+}
+.title-string>span{
+    color: #c41a16;
+}
+.title-boolean,title-number{
+    color: #03c;
+}
+.title-null,title-undefined{
+    color: #999;
+}
+
