@@ -128,7 +128,6 @@ sendMessageToContentScript({type:'getVue'}, (response) => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if(message.type === 'store-change'){
         if(app){
-            console.log(message.msg)
             app.store=JSON.parse(message.msg);
         }
     }
