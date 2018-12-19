@@ -14,10 +14,10 @@ if(!app){
                         <span class="title-type"  v-if="getType(value)==='obj'">Object</span>
                         <span class="title-type"  v-if="getType(value)==='arr'">Array</span>
                         <span class="title-value" v-if="getType(value)==='else'">
-                            <span class="title-string" v-if="getAccurateType(value)==='string'">"<span>{{value}}</span>"</span>
+                            <span class="title-string" v-if="getAccurateType(value)==='string'&&value!=='undefined'">"<span>{{value}}</span>"</span>
                             <span class="title-boolean" v-if="getAccurateType(value)==='boolean'">{{value}}</span>
                             <span class="title-number" v-if="getAccurateType(value)==='number'">{{value}}</span>
-                            <span class="title-undefined" v-if="getAccurateType(value)==='undefined'">undefined</span>
+                            <span class="title-undefined" v-if="getAccurateType(value)==='string'&&value==='undefined'">undefined</span>
                             <span class="title-null" v-if="getAccurateType(value)==='null'">null</span>
                         </span>
                     </div>
@@ -118,7 +118,7 @@ function sendMessageToContentScript(message, callback)
 sendMessageToContentScript({type:'getVue'}, (response) => {
     if(response){
         if(app&&response.type=="store-change"){
-            app.store=response.msg;
+            app.store=JSON.parse(response.msg);
         }
     }
 });
@@ -128,7 +128,8 @@ sendMessageToContentScript({type:'getVue'}, (response) => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if(message.type === 'store-change'){
         if(app){
-            app.store=message.msg;
+            console.log(message.msg)
+            app.store=JSON.parse(message.msg);
         }
     }
 })

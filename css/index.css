@@ -35,10 +35,10 @@
 .title-string>span{
     color: #c41a16;
 }
-.title-boolean,title-number{
+.title-boolean,.title-number{
     color: #03c;
 }
-.title-null,title-undefined{
+.title-null,.title-undefined{
     color: #999;
 }
 
